@@ -32,3 +32,18 @@ React × Spring Boot × PostgreSQL によるフルスタック開発を学ぶた
 - 月別支出グラフの表示
 - 目標貯金額に対する達成率の表示
 - ユーザーごとのログイン機能（予定）
+
+
+## ブランチ構成（画面・機能単位）
+
+| 機能 | ブランチ名 |
+|------|------------|
+| ログイン | `feature/login` |
+| ホーム | `feature/home` |
+| 支出登録 | `feature/expense-form` |
+| 収入登録 | `feature/income-form` |
+| 月別集計 | `feature/monthly-summary` |
+| 設定 | `feature/settings` |
+| CSV出力 | `feature/csv-export` |
+| 貯金目標設定 | `feature/saving-goal` |
+| 外部連携 | `feature/integration` |
