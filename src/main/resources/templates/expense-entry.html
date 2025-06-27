@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>支出登録</title>
+</head>
+<body>
+    <h1>支出登録フォーム</h1>
+
+    <!-- 成功メッセージの表示 -->
+    <p th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></p>
+
+    <!-- 支出登録フォーム -->
+    <form th:action="@{/expense/entry}" th:object="${expenseEntryForm}" method="post">
+
+        <!-- 日付 -->
+        <label>日付：</label>
+        <input type="date" th:field="*{date}"/>
+        <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color:red"></div>
+        <br><br>
+
+        <!-- カテゴリ -->
+        <label>カテゴリ：</label>
+        <select th:field="*{category}">
+            <option value="">--選択--</option>
+            <option value="食費">食費</option>
+            <option value="交通費">交通費</option>
+            <option value="娯楽">娯楽</option>
+        </select>
+        <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="color:red"></div>
+        <br><br>
+
+        <!-- 金額 -->
+        <label>金額：</label>
+        <input type="number" th:field="*{amount}"/>
+        <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" style="color:red"></div>
+        <br><br>
+
+        <!-- メモ -->
+        <label>メモ：</label>
+        <input type="text" th:field="*{memo}"/>
+        <br><br>
+
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>
