@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+</head>
+<body>
+    <h1>家計簿アプリ ホーム</h1>
+
+    <table border="1">
+        <tr><th>今月の収入</th><td th:text="'¥' + ${income}">¥0</td></tr>
+        <tr><th>今月の支出</th><td th:text="'¥' + ${expense}">¥0</td></tr>
+        <tr><th>今月の残高</th><td th:text="'¥' + ${balance}">¥0</td></tr>
+    </table>
+
+    <br>
+
+    <button onclick="location.href='/expense/add'">支出登録</button>
+    <button onclick="location.href='/income/add'">収入登録</button>
+    <button onclick="location.href='/summary'">集計画面</button>
+    <button onclick="location.href='/setting'">設定画面</button>
+    <button onclick="location.href='/logout'">ログアウト</button>
+</body>
+</html>
