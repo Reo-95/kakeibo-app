@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>収入登録</title>
+</head>
+<body>
+    <h1>収入登録フォーム</h1>
+
+    <form th:action="@{/income/add}" th:object="${incomeEntryForm}" method="post">
+        <div>
+            <label>日付:</label>
+            <input type="date" th:field="*{date}" />
+            <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color:red"></div>
+        </div>
+
+        <div>
+            <label>金額:</label>
+            <input type="number" th:field="*{amount}" />
+            <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" style="color:red"></div>
+        </div>
+
+        <div>
+            <label>カテゴリ:</label>
+            <select th:field="*{category}">
+                <option value="" hidden>選択してください</option>
+                <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="color:red"></div>
+        </div>
+
+        <div>
+            <label>メモ:</label>
+            <textarea th:field="*{memo}" placeholder="例：臨時収入（お年玉）など"></textarea>
+        </div>
+
+        <button type="submit">保存</button>
+        <button type="button" onclick="location.href='/'">戻る</button>
+    </form>
+</body>
+</html>
