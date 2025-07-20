@@ -1,8 +1,10 @@
-package com.kakeibo.kakeibo_app.service;
+package com.kakeibo.kakeibo_app.service.impl;
 
 import com.kakeibo.kakeibo_app.form.ExpenseEntryForm;
 import com.kakeibo.kakeibo_app.entity.Expense;
 import com.kakeibo.kakeibo_app.repository.ExpenseRepository;
+import com.kakeibo.kakeibo_app.service.ExpenseEntryService;
+
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;

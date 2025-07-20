@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>月別集計</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>月別集計画面</h1>
+
+    <!-- 月選択フォーム -->
+    <form method="get" th:action="@{/summary/monthly}">
+        <label>月選択：</label>
+        <input type="month" name="yearMonth" th:value="${selectedMonth}" required>
+        <button type="submit">表示</button>
+    </form>
+
+    <hr>
+
+    <p>選択中の月：<strong th:text="${selectedMonth}">2025-07</strong></p>
+
+    <!-- 集計テーブル -->
+    <div>
+        <h2>カテゴリ別集計</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>カテゴリ</th>
+                    <th>支出合計</th>
+                    <th>収入合計</th>
+                    <th>支出割合</th>
+                    <th>収入割合</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="summary : ${summaries}">
+                    <td th:text="${summary.category}">カテゴリ</td>
+                    <td th:text="${#numbers.formatInteger(summary.totalExpense, 1, 'COMMA')} + '円'">支出合計</td>
+                    <td th:text="${#numbers.formatInteger(summary.totalIncome, 1, 'COMMA')} + '円'">収入合計</td>
+                    <td th:text="${summary.expenseRatio}">支出割合</td>
+                    <td th:text="${summary.incomeRatio}">収入割合</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>合計</th>
+                    <td th:text="${#numbers.formatInteger(totalExpense, 1, 'COMMA')} + '円'">支出合計</td>
+                    <td th:text="${#numbers.formatInteger(totalIncome, 1, 'COMMA')} + '円'">収入合計</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <br>
+    <button type="button" onclick="location.href='/'">戻る</button>
+</body>
+</html>

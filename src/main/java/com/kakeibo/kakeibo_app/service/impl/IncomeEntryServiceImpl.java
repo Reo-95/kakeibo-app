@@ -1,8 +1,10 @@
-package com.kakeibo.kakeibo_app.service;
+package com.kakeibo.kakeibo_app.service.impl;
 
 import com.kakeibo.kakeibo_app.entity.Income;
 import com.kakeibo.kakeibo_app.form.IncomeEntryForm;
 import com.kakeibo.kakeibo_app.repository.IncomeRepository;
+import com.kakeibo.kakeibo_app.service.IncomeEntryService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
